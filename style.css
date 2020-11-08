@@ -68,7 +68,6 @@ p {
 .screenshot {
   max-width: 100%;
   height: auto;
-  margin-top: 94px;
   margin-bottom: 72px;
 }
 
@@ -185,7 +184,7 @@ footer {
 }
 
 .form__message {
-  visibility: hidden;
+  order: 100;
   width: 100%;
   margin-top: 6px;
   padding-left: 40px;
@@ -193,10 +192,6 @@ footer {
   text-align: left;
   font-size: 12px;
   font-style: italic;
-}
-
-.form__message--visible {
-  visibility: visible;
 }
 
 input {
@@ -276,6 +271,12 @@ button[type=submit]:hover {
   }
 }
 
+@media screen and (max-width: 800px) {
+  .form__message {
+    order: 0;
+  }
+}
+
 @media screen and (max-width: 375px) {
   body {
     font-size: 12px;
@@ -311,7 +312,6 @@ button[type=submit]:hover {
   }
   
   .form__message {
-    order: 0;
     margin-top: 0;
     margin-bottom: 20px;
     padding-left: 0;

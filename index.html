@@ -20,7 +20,7 @@
 
     <form action="#" class="container__form" aria-label="Subscribe for updates"  novalidate>
       <input title="email address" type="email" name="Your email address" id="email" placeholder="Your email address…" required>
-      <p class="form__message"></p>
+      <p class="form__message">&nbsp;</p>
       <button title="submit email for updates" type="submit">Notify Me</button>
     </form>
 
@@ -29,17 +29,17 @@
 
     <ul class="social-links">
       <li>
-        <a href="" title="social media link to Facebook">
+        <a href="#" title="social media link to Facebook">
           <i class="fab fa-facebook-f"></i>
         </a>
       </li>
       <li>
-        <a href="" title="social media link to Twitter">
+        <a href="#" title="social media link to Twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
       <li>
-        <a href="" title="social media link to Instagram">
+        <a href="#" title="social media link to Instagram">
           <i class="fab fa-instagram"></i>
         </a>
       </li>
@@ -62,7 +62,6 @@
 
     function submitSuccess() {
       emailAddress.classList.remove('input--invalid');
-      errorMessage.classList.remove('form__message--visible');
       ctaMsg.textContent = `${emailAddress.value} has been subscribed!`;
       ctaMsg.classList.add('bounce', 'bold');
       subscribeForm.classList.add('hideForm');
@@ -79,7 +78,6 @@
       }
 
       emailAddress.classList.add('input--invalid');
-      errorMessage.classList.add('form__message--visible');
       errorMessage.classList.add('bounce');
     }
 
