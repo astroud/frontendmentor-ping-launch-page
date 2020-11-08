@@ -2,33 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Ping coming soon page</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
+   <title>Frontend Mentor | Ping coming soon page</title>
+  </head>
 <body>
+  <div id="container">
+    <h1>PING<strong>.</strong></h1>
+    <h2>We are launching <strong>soon!</strong></h2>
 
-  We are launching soon!
+    <p class="call-to-action">Subscribe and get notified</p>
 
-  Subscribe and get notified
+    <form action="#" class="container__form" aria-label="Subscribe for updates"  novalidate>
+      <input title="email address" type="email" name="Your email address" id="email" placeholder="Your email address…" required>
+      <p class="form__message"></p>
+      <button title="submit email for updates" type="submit">Notify Me</button>
+    </form>
 
-  Notify Me
+    <img src="./images/illustration-dashboard.png" width="1280" height="782" alt="screenshot of Ping's dashboard"
+      class="screenshot">
 
-  &copy; Copyright Ping. All rights reserved.
+    <ul class="social-links">
+      <li>
+        <a href="" title="social media link to Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+      <li>
+        <a href="" title="social media link to Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a href="" title="social media link to Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
 
-  <footer>
-    <p class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="#">Your Name Here</a>.
-    </p>
-  </footer>
+    <footer>
+      <p class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=astroud" title="Frontend Mentor .io platform" target="_blank">Frontend Mentor</a>. 
+        Coded by <a href="https://aaronstroud.com" title="Aaron's homepage">Aaron Stroud</a>.
+      </p>
+    </footer>
+    
+
+  <script>
+    const subscribeForm = document.querySelector('form');
+    const emailAddress = document.querySelector('#email');
+    const ctaMsg = document.querySelector('.call-to-action');
+    const errorMessage = document.querySelector('.form__message');
+
+    function submitSuccess() {
+      emailAddress.classList.remove('input--invalid');
+      errorMessage.classList.remove('form__message--visible');
+      ctaMsg.textContent = `${emailAddress.value} has been subscribed!`;
+      ctaMsg.classList.add('bounce', 'bold');
+      subscribeForm.classList.add('hideForm');
+    }
+
+    function showError() {
+      if (emailAddress.validity.valueMissing) {
+        errorMessage.textContent =
+          'Whoops! It looks like you forgot to add your email.';
+      } else if (emailAddress.validity.typeMismatch) {
+        errorMessage.textContent = 'Please provide a valid email address.';
+      } else if (emailAddress.validity.tooShort) {
+        errorMessage.textContent = `Email should be at least ${emailAddress.minLength} characters; you entered ${emailAddress.value.length}.`;
+      }
+
+      emailAddress.classList.add('input--invalid');
+      errorMessage.classList.add('form__message--visible');
+      errorMessage.classList.add('bounce');
+    }
+
+    subscribeForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+    
+      if (emailAddress.validity.valid) {
+        submitSuccess();
+      } else {
+        showError();
+      }
+    });
+  </script>
 </body>
 </html>
